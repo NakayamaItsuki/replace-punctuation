@@ -43,6 +43,26 @@
     <textarea id="input-text" rows="10" placeholder="ここにテキストを入力してください．"></textarea>
     <h2>変換結果</h2>
     <textarea id="output-text" rows="10" readonly></textarea>
-    <script src="script.js"></script>
+    <script>
+        // 入力エリアで文字が変更されるたびに実行
+        document.getElementById("input-text").addEventListener("input", () => {
+            // 入力テキストを取得
+            const inputText = document.getElementById("input-text").value;
+
+            // 句読点を置換
+            const outputText = inputText.replace(/。/g, "．").replace(/、/g, "，");
+
+            // 結果を表示
+            document.getElementById("output-text").value = outputText;
+        });
+
+        // CMD+SやCtrl+Sを無効化
+        document.addEventListener("keydown", (event) => {
+            if ((event.metaKey || event.ctrlKey) && event.key === "s") {
+                event.preventDefault(); // デフォルト動作を無効化
+                alert("このページでは保存ショートカットは無効化されています．");
+            }
+        });
+    </script>
 </body>
 </html>
