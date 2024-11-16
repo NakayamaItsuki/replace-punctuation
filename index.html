@@ -30,6 +30,19 @@
             border-radius: 5px;
             box-sizing: border-box;
         }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 10px;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
         /* スマホ対応 */
         @media (max-width: 600px) {
             textarea {
@@ -43,6 +56,7 @@
     <textarea id="input-text" rows="10" placeholder="ここにテキストを入力してください．"></textarea>
     <h2>変換結果</h2>
     <textarea id="output-text" rows="10" readonly></textarea>
+    <button id="copy-button">コピーする</button>
     <script>
         // 入力エリアで文字が変更されるたびに実行
         document.getElementById("input-text").addEventListener("input", () => {
@@ -62,6 +76,18 @@
                 event.preventDefault(); // デフォルト動作を無効化
                 alert("このページでは保存ショートカットは無効化されています．");
             }
+        });
+
+        // コピー機能
+        document.getElementById("copy-button").addEventListener("click", () => {
+            const outputText = document.getElementById("output-text").value;
+
+            // テキストをクリップボードにコピー
+            navigator.clipboard.writeText(outputText).then(() => {
+                // alert("変換結果をコピーしました！");
+            }).catch(err => {
+                // alert("コピーに失敗しました：" + err);
+            });
         });
     </script>
 </body>
