@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>句読点置換ツール</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        textarea {
+            width: 80%;
+            max-width: 600px;
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        /* スマホ対応 */
+        @media (max-width: 600px) {
+            textarea {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>句読点置換ツール</h1>
+    <textarea id="input-text" rows="10" placeholder="ここにテキストを入力してください．"></textarea>
+    <h2>変換結果</h2>
+    <textarea id="output-text" rows="10" readonly></textarea>
+    <script src="script.js"></script>
+</body>
+</html>
